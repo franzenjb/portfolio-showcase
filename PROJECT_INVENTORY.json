@@ -51,12 +51,12 @@
         "notes": "Outdated - use PythonAnywhere version instead"
       },
       {
-        "name": "Infrastructure Search (HIFLD)",
+        "name": "Infrastructure Search Tool V2",
         "status": "active",
-        "liveUrl": "https://franzenjb.github.io/infrastructure-search-tool/",
-        "githubUrl": "https://github.com/franzenjb/infrastructure-search-tool",
-        "description": "Infrastructure data search",
-        "notes": "Working - password forgotten"
+        "liveUrl": "https://franzenjb.github.io/infrastructure-tool-v2/",
+        "githubUrl": "https://github.com/franzenjb/infrastructure-tool-v2",
+        "description": "HIFLD infrastructure layer search and visualization",
+        "notes": "Working V2 - Enhanced version with better search functionality"
       },
       {
         "name": "Florida Operations Menu",
