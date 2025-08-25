@@ -19,6 +19,14 @@
         "notes": "NEW - Real-time hurricane impact analysis with physics-based modeling"
       },
       {
+        "name": "CAP Charts Data Analysis V2",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/cap-charts-showcase/data-analysis.html",
+        "githubUrl": "https://github.com/franzenjb/cap-charts-showcase",
+        "description": "Advanced data analysis with interactive visualizations",
+        "notes": "NEW V2 - Enhanced data analysis page with advanced features"
+      },
+      {
         "name": "CAP Charts Showcase",
         "status": "active",
         "liveUrl": "https://franzenjb.github.io/cap-charts-showcase/",
