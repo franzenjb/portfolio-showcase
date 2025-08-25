@@ -1,0 +1,155 @@
+{
+  "lastUpdated": "2025-08-25",
+  "projects": {
+    "githubPages": [
+      {
+        "name": "Hurricane Dashboard V2",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/hurricane-dashboard-v2/",
+        "githubUrl": "https://github.com/franzenjb/hurricane-dashboard-v2",
+        "description": "Interactive Atlantic Hurricane Timeline",
+        "notes": "Working - Main hurricane tracking application"
+      },
+      {
+        "name": "Suncoast Mobile Emergency Response",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/suncoast-mobile/",
+        "githubUrl": "https://github.com/franzenjb/suncoast-mobile",
+        "description": "Hurricane tracking & facility management for Suncoast Credit Union",
+        "notes": "NEW - Real-time hurricane impact analysis with physics-based modeling"
+      },
+      {
+        "name": "CAP Charts Showcase",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/cap-charts-showcase/",
+        "githubUrl": "https://github.com/franzenjb/cap-charts-showcase",
+        "description": "Advanced chart visualizations and data analysis tools",
+        "notes": "NEW - Interactive charts and data visualization platform"
+      },
+      {
+        "name": "Store Status Monitor",
+        "status": "broken",
+        "liveUrl": "https://franzenjb.github.io/store-status-monitor/",
+        "githubUrl": "https://github.com/franzenjb/store-status-monitor",
+        "description": "Emergency response tool",
+        "notes": "Not working - hosted on Vercel?"
+      },
+      {
+        "name": "SECAR Weather Update",
+        "status": "outdated",
+        "liveUrl": "https://franzenjb.github.io/secar-weather-update/",
+        "githubUrl": "https://github.com/franzenjb/secar-weather-update",
+        "description": "Weather monitoring",
+        "notes": "Outdated - use PythonAnywhere version instead"
+      },
+      {
+        "name": "Infrastructure Search (HIFLD)",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/infrastructure-search-tool/",
+        "githubUrl": "https://github.com/franzenjb/infrastructure-search-tool",
+        "description": "Infrastructure data search",
+        "notes": "Working - password forgotten"
+      },
+      {
+        "name": "Florida Operations Menu",
+        "status": "broken",
+        "liveUrl": "https://franzenjb.github.io/florida-operations-menu/",
+        "githubUrl": "https://github.com/franzenjb/florida-operations-menu",
+        "description": "Operations menu",
+        "notes": "404 error - remove"
+      },
+      {
+        "name": "Florida Historical Landfall",
+        "status": "deprecated",
+        "liveUrl": "https://franzenjb.github.io/Florida-Historical-Landfall/",
+        "githubUrl": "https://github.com/franzenjb/Florida-Historical-Landfall",
+        "description": "Hurricane data",
+        "notes": "Replaced by Hurricane Dashboard V2 - remove"
+      },
+      {
+        "name": "Info Database",
+        "status": "outdated",
+        "liveUrl": "https://franzenjb.github.io/info-database/",
+        "githubUrl": "https://github.com/franzenjb/info-database",
+        "description": "Bookmark program",
+        "notes": "Old version with no links - need to find version with 900+ links"
+      },
+      {
+        "name": "Fire Alarms Dashboard",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/redcross-fire-alarms-dashboard/dash-full/",
+        "githubUrl": "https://github.com/franzenjb/redcross-fire-alarms-dashboard",
+        "description": "Red Cross fire alarm data",
+        "notes": "Working"
+      },
+      {
+        "name": "Projects Dashboard",
+        "status": "broken",
+        "liveUrl": "https://franzenjb.github.io/Administration/projects/",
+        "githubUrl": "https://github.com/franzenjb/Administration",
+        "description": "Project administration",
+        "notes": "Dead links - removed from portfolio"
+      },
+      {
+        "name": "Hurricane Milton Report",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/hurricane-milton-report/",
+        "githubUrl": "https://github.com/franzenjb/hurricane-milton-report",
+        "description": "Hurricane analysis",
+        "notes": "Working"
+      }
+    ],
+    "pythonAnywhere": [
+      {
+        "name": "Professional Geocoding Tool",
+        "status": "broken",
+        "liveUrl": "https://jfranzen.pythonanywhere.com/",
+        "githubUrl": "https://github.com/franzenjb/professional-geocoding-tool",
+        "description": "Bulk address geocoding",
+        "notes": "Internal server error"
+      },
+      {
+        "name": "SECAR Weather Report",
+        "status": "active",
+        "liveUrl": "https://jfranzen.pythonanywhere.com/weather/",
+        "githubUrl": "https://github.com/franzenjb/weather-daily-report",
+        "description": "Current weather reporting tool",
+        "notes": "Working - this is the current weather tool"
+      },
+      {
+        "name": "NOS Menu (National Operations)",
+        "status": "active",
+        "liveUrl": "https://menu-jfranzen.pythonanywhere.com/",
+        "githubUrl": "https://github.com/franzenjb/National_Operations_Summary",
+        "description": "National operations summary menu",
+        "notes": "Working"
+      }
+    ],
+    "vercel": [
+      {
+        "name": "Store Status Monitor",
+        "status": "active",
+        "liveUrl": "https://store-status-monitor.vercel.app/",
+        "githubUrl": "https://github.com/franzenjb/store-status-monitor",
+        "description": "Emergency response tool",
+        "notes": "Working on Vercel"
+      }
+    ],
+    "netlify": [],
+    "other": []
+  },
+  "notes": {
+    "todoList": [
+      "Find current Info Database with 900+ links",
+      "Find Store Status Monitor Vercel URL",
+      "Fix Professional Geocoding Tool on PythonAnywhere",
+      "Remove deprecated projects from portfolio"
+    ],
+    "conventions": {
+      "githubPages": "https://franzenjb.github.io/{repository-name}/",
+      "pythonAnywhere": "https://{subdomain}.pythonanywhere.com/",
+      "vercel": "https://{project-name}.vercel.app/",
+      "netlify": "https://{project-name}.netlify.app/"
+    }
+  }
+}

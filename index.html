@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Active Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Fixed Sidebar */
+        .sidebar {
+            width: 300px;
+            background: #2c3e50;
+            color: white;
+            overflow-y: auto;
+            flex-shrink: 0;
+            height: 100vh;
+        }
+        
+        .sidebar-header {
+            background: #1a252f;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .sidebar h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .status-note {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 10px;
+        }
+        
+        .category {
+            padding: 15px;
+        }
+        
+        .category h2 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            border-bottom: 1px solid #34495e;
+            padding-bottom: 5px;
+        }
+        
+        .project-item {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: #34495e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .project-item:hover {
+            background: #4a5f7a;
+            transform: translateX(5px);
+        }
+        
+        .project-item.active {
+            background: #3498db;
+        }
+        
+        .project-item.python {
+            background: #3776ab;
+        }
+        
+        .project-item.python:hover {
+            background: #4a8bc2;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ecf0f1;
+        }
+        
+        .content-header {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .current-project {
+            flex: 1;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .action-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .open-tab-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .open-tab-btn:hover {
+            background: #2980b9;
+        }
+        
+        .github-btn {
+            background: #34495e;
+            color: white;
+        }
+        
+        .github-btn:hover {
+            background: #2c3e50;
+        }
+        
+        /* Content Frame */
+        .frame-container {
+            flex: 1;
+            position: relative;
+            background: white;
+        }
+        
+        #projectFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #7f8c8d;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .welcome-message h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        .welcome-message p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #34495e;
+        }
+        
+        .project-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .highlight-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .highlight-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-card .stats {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        
+        .highlight-card .description {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Mobile Toggle */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -300px;
+                z-index: 999;
+                transition: left 0.3s;
+            }
+            
+            .sidebar.open {
+                left: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .main-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Fixed Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1>My Active Projects</h1>
+            <div class="status-note">Only showing working projects</div>
+        </div>
+        
+        <!-- Working GitHub Pages Projects -->
+        <div class="category">
+            <h2>🌐 GitHub Pages (Working)</h2>
+            <button class="project-item" onclick="loadProject('Suncoast Mobile Emergency Response', 'https://franzenjb.github.io/suncoast-mobile/', 'https://github.com/franzenjb/suncoast-mobile', this)" style="background: #27ae60;">
+                🆕 Suncoast Mobile Emergency Response
+            </button>
+            <button class="project-item" onclick="loadProject('CAP Charts Showcase', 'https://franzenjb.github.io/cap-charts-showcase/', 'https://github.com/franzenjb/cap-charts-showcase', this)" style="background: #27ae60;">
+                🆕 CAP Charts Showcase
+            </button>
+            <button class="project-item" onclick="loadProject('Hurricane Dashboard V2', 'https://franzenjb.github.io/hurricane-dashboard-v2/', 'https://github.com/franzenjb/hurricane-dashboard-v2', this)">
+                Hurricane Dashboard V2
+            </button>
+            <button class="project-item" onclick="loadProject('Fire Alarms Dashboard', 'https://franzenjb.github.io/redcross-fire-alarms-dashboard/dash-full/', 'https://github.com/franzenjb/redcross-fire-alarms-dashboard', this)">
+                Fire Alarms Dashboard
+            </button>
+            <button class="project-item" onclick="loadProject('Infrastructure Search', 'https://franzenjb.github.io/infrastructure-search-tool/', 'https://github.com/franzenjb/infrastructure-search-tool', this)">
+                Infrastructure Search (HIFLD)
+            </button>
+            <button class="project-item" onclick="loadProject('Hurricane Milton Report', 'https://franzenjb.github.io/hurricane-milton-report/', 'https://github.com/franzenjb/hurricane-milton-report', this)">
+                Hurricane Milton Report
+            </button>
+            <button class="project-item" onclick="loadProject('JBF Link Database', 'https://franzenjb.github.io/Administration/jbf-link-database.html', 'https://github.com/franzenjb/Administration', this)">
+                JBF Link Database (1,192 bookmarks)
+            </button>
+        </div>
+        
+        <!-- Other Platforms -->
+        <div class="category">
+            <h2>🚀 Other Platforms</h2>
+            <button class="project-item" onclick="loadProject('Store Status Monitor', 'https://store-status-monitor.vercel.app/', 'https://github.com/franzenjb/store-status-monitor', this)">
+                Store Status Monitor (Vercel)
+            </button>
+        </div>
+        
+        <!-- Working PythonAnywhere Projects -->
+        <div class="category">
+            <h2>🐍 PythonAnywhere (Working)</h2>
+            <button class="project-item python" onclick="loadProject('Weather Report', 'https://jfranzen.pythonanywhere.com/weather/', 'https://github.com/franzenjb/weather-daily-report', this)">
+                SECAR Weather Report
+            </button>
+            <button class="project-item python" onclick="loadProject('NOS Menu', 'https://menu-jfranzen.pythonanywhere.com/', 'https://github.com/franzenjb/National_Operations_Summary', this)">
+                NOS Menu (National Ops)
+            </button>
+        </div>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="content-header">
+            <span class="current-project" id="currentProject">Select a project from the menu</span>
+            <button class="action-button open-tab-btn" onclick="openInNewTab()" id="openTabBtn" style="display:none;">
+                Open in New Tab ↗
+            </button>
+            <button class="action-button github-btn" onclick="openGitHub()" id="githubBtn" style="display:none;">
+                View GitHub
+            </button>
+        </div>
+        
+        <!-- Content Frame -->
+        <div class="frame-container" id="frameView">
+            <div class="welcome-message" id="welcomeMsg">
+                <h2>Welcome to My Project Portfolio</h2>
+                <p>Building innovative solutions for emergency response, weather tracking, and data visualization</p>
+                
+                <div class="project-highlights">
+                    <div class="highlight-card" onclick="loadProject('Hurricane Dashboard V2', 'https://franzenjb.github.io/hurricane-dashboard-v2/', 'https://github.com/franzenjb/hurricane-dashboard-v2', this)">
+                        <h3>🌀 Hurricane Dashboard V2</h3>
+                        <div class="stats">173+ Years</div>
+                        <div class="description">Comprehensive Atlantic hurricane tracking system with historical data from 1851-2024</div>
+                    </div>
+                    
+                    <div class="highlight-card" onclick="loadProject('Fire Alarms Dashboard', 'https://franzenjb.github.io/redcross-fire-alarms-dashboard/dash-full/', 'https://github.com/franzenjb/redcross-fire-alarms-dashboard', this)">
+                        <h3>🚨 Fire Alarms Dashboard</h3>
+                        <div class="stats">271,893</div>
+                        <div class="description">Red Cross fire alarm installations tracked and visualized across multiple regions</div>
+                    </div>
+                    
+                    <div class="highlight-card" onclick="loadProject('JBF Link Database', 'https://franzenjb.github.io/Administration/jbf-link-database.html', 'https://github.com/franzenjb/Administration', this)">
+                        <h3>📚 JBF Link Database</h3>
+                        <div class="stats">1,192 Links</div>
+                        <div class="description">Curated collection of bookmarks organized for quick access and reference</div>
+                    </div>
+                    
+                    <div class="highlight-card" onclick="loadProject('Weather Report', 'https://jfranzen.pythonanywhere.com/weather/', 'https://github.com/franzenjb/weather-daily-report', this)">
+                        <h3>🌦️ Weather Monitoring</h3>
+                        <div class="stats">Live Updates</div>
+                        <div class="description">Real-time weather reports and emergency alerts for Southeast regions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentUrl = '';
+        let currentGitHub = '';
+        
+        function loadProject(name, url, github, button) {
+            // Update active state
+            document.querySelectorAll('.project-item').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            
+            // Update current project info
+            currentUrl = url;
+            currentGitHub = github;
+            document.getElementById('currentProject').textContent = name;
+            document.getElementById('openTabBtn').style.display = 'inline-block';
+            document.getElementById('githubBtn').style.display = 'inline-block';
+            
+            // Hide welcome message and load iframe
+            document.getElementById('welcomeMsg').style.display = 'none';
+            
+            // Remove existing iframe if any
+            const existingFrame = document.getElementById('projectFrame');
+            if (existingFrame) {
+                existingFrame.remove();
+            }
+            
+            // Create new iframe
+            const iframe = document.createElement('iframe');
+            iframe.id = 'projectFrame';
+            iframe.src = url;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            document.getElementById('frameView').appendChild(iframe);
+            
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+        
+        function openInNewTab() {
+            if (currentUrl) {
+                window.open(currentUrl, '_blank');
+            }
+        }
+        
+        function openGitHub() {
+            if (currentGitHub) {
+                window.open(currentGitHub, '_blank');
+            }
+        }
+        
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('sidebar');
+                const toggleBtn = document.querySelector('.mobile-toggle');
+                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
