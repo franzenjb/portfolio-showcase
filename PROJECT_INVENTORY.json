@@ -1,7 +1,15 @@
 {
-  "lastUpdated": "2025-08-25",
+  "lastUpdated": "2025-08-29",
   "projects": {
     "githubPages": [
+      {
+        "name": "Gemini Image Studio",
+        "status": "active",
+        "liveUrl": "https://franzenjb.github.io/gemini-image-studio/",
+        "githubUrl": "https://github.com/franzenjb/gemini-image-studio",
+        "description": "AI-powered image generation and editing studio using Google's Gemini API",
+        "notes": "NEW - Beautiful modern UI with text-to-image, image editing, style transfer, and multi-image composition"
+      },
       {
         "name": "Hurricane Dashboard V2",
         "status": "active",
